@@ -22,13 +22,13 @@ export function TopicCard({ topic }: TopicCardProps) {
     <Link
       href={topic.href}
       prefetch={false}
-      className="group flex min-h-[104px] items-center justify-between gap-3 rounded-2xl border border-[#f1e4d9] bg-[linear-gradient(145deg,#fff,#fffaf6)] px-4 py-4 transition-all duration-200 hover:-translate-y-[3px] hover:border-[var(--primary)] hover:shadow-[0_10px_24px_rgba(11,53,103,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
+      className="group flex min-h-[104px] items-center justify-between gap-2 rounded-2xl border border-[#f1e4d9] bg-[linear-gradient(145deg,#fff,#fffaf6)] px-3 py-4 transition-all duration-200 hover:-translate-y-[3px] hover:border-[var(--primary)] hover:shadow-[0_10px_24px_rgba(11,53,103,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] sm:gap-3 sm:px-4"
     >
-      <div className="flex min-w-0 items-center gap-3">
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center overflow-visible rounded-full transition-transform duration-200 group-hover:scale-[1.04] ${topic.iconClassName}`}>
+      <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+        <div className={`flex h-10 w-10 shrink-0 items-center justify-center overflow-visible rounded-full transition-transform duration-200 group-hover:scale-[1.04] ${topic.iconClassName}`}>
           <Icon className="h-5 w-5 shrink-0" />
         </div>
-        <span className="text-base font-[700] leading-snug text-[var(--navy)]">
+        <span className="min-w-0 text-base font-[700] leading-snug text-[var(--navy)]">
           {topic.title}
         </span>
       </div>

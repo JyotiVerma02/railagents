@@ -50,7 +50,7 @@ export function Header() {
 
   return (
     <header className="relative z-30 border-b border-[var(--primary-border)]/60 bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto grid h-[70px] max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 xl:grid-cols-[auto_minmax(0,1fr)_auto] xl:gap-3 xl:px-8">
+      <div className="mx-auto grid h-[70px] max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-5 md:px-6 lg:px-7 xl:grid-cols-[auto_minmax(0,1fr)_auto] xl:gap-3 xl:px-8 min-[1366px]:!px-9 min-[1440px]:!px-10 2xl:!px-12">
         <div className="justify-self-start">
           <Logo />
         </div>

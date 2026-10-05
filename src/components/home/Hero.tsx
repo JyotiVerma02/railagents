@@ -21,17 +21,10 @@ export function Hero() {
     <section className="relative overflow-hidden border-b border-[var(--primary-border)] bg-[var(--primary-soft)]">
       <div
         aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgba(255,253,251,0.98) 0%, rgba(255,252,248,0.94) 42%, rgba(255,247,237,0.78) 68%, rgba(255,247,237,0.42) 100%), url('/images/hero-railway-bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center right",
-          backgroundRepeat: "no-repeat",
-        }}
+        className="hero-railway-backdrop absolute inset-0"
       />
-      <div className="relative mx-auto max-w-[1440px] px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-        <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(220px,0.9fr)] xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)_minmax(320px,0.9fr)] xl:gap-8">
+      <div className="relative mx-auto max-w-[1440px] px-4 pt-8 sm:px-5 md:px-6 lg:px-7 xl:px-8 min-[1366px]:!px-9 min-[1440px]:!px-10 2xl:!px-12">
+        <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(220px,0.9fr)] xl:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)_minmax(320px,0.95fr)] xl:gap-5 2xl:gap-7">
           <div className="pt-2">
             <span className="mb-5 inline-flex rounded-full border border-[#fdba74] bg-white/80 px-4 py-1.5 text-sm font-[700] text-[var(--navy)] shadow-sm">
               Your Partner in Travel Business
@@ -90,10 +83,10 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative order-3 flex h-[250px] items-start justify-center overflow-hidden md:order-none md:h-[420px] xl:h-[480px]">
+          <div className="relative order-2 flex h-[300px] items-start justify-center overflow-hidden md:h-[360px] md:self-end xl:h-[470px]">
             <div
               aria-hidden="true"
-              className="absolute left-1/2 top-1/2 h-[min(90vw,420px)] w-[min(90vw,420px)] -translate-x-1/2 -translate-y-1/2 rounded-full"
+              className="absolute bottom-0 left-1/2 h-[min(90vw,420px)] w-[min(90vw,420px)] -translate-x-1/2 rounded-full"
               style={{
                 background:
                   "radial-gradient(circle, rgba(249,115,22,0.10) 0%, rgba(249,115,22,0.04) 55%, transparent 72%)",
@@ -105,12 +98,12 @@ export function Hero() {
               width={619}
               height={1443}
               priority
-              sizes="(min-width: 1280px) 340px, (min-width: 768px) 290px, 260px"
-              className="relative z-10 h-auto w-[220px] max-w-full object-contain object-top sm:w-[250px] md:w-[290px] xl:w-[330px]"
+              sizes="(min-width: 1536px) 330px, (min-width: 1280px) 320px, (min-width: 768px) 270px, (min-width: 400px) 240px, 220px"
+              className="relative z-10 h-auto w-[220px] max-w-full object-contain object-top min-[400px]:w-[240px] sm:w-[250px] md:w-[270px] xl:w-[320px] 2xl:w-[330px]"
             />
           </div>
 
-          <div className="relative order-2 md:order-none md:col-span-2 xl:col-span-1">
+          <div className="relative order-3 md:col-span-2 xl:col-span-1">
             <div className="rounded-[22px] border border-[var(--primary-border)]/55 bg-white/95 p-5 shadow-[0_18px_42px_rgba(15,39,71,0.08)] backdrop-blur-sm sm:p-6">
               <div className="mb-4">
                 <p className="text-[1.625rem] font-[800] leading-[1.1] tracking-[-0.05em] text-[var(--navy)]">
