@@ -24,18 +24,12 @@ export function Hero() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(255,252,248,0.84) 35%, rgba(255,247,237,0.65) 62%, rgba(255,247,237,0.24) 100%), url('/images/hero-railway-bg.png')",
+            "linear-gradient(90deg, rgba(255,253,251,0.98) 0%, rgba(255,252,248,0.94) 42%, rgba(255,247,237,0.78) 68%, rgba(255,247,237,0.42) 100%), url('/images/hero-railway-bg.png')",
           backgroundSize: "cover",
           backgroundPosition: "center right",
           backgroundRepeat: "no-repeat",
         }}
       />
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute left-[-8%] top-[20%] h-[320px] w-[320px] rounded-full bg-white/70 blur-3xl" />
-        <div className="absolute right-[18%] top-[12%] h-[260px] w-[260px] rounded-full bg-[var(--primary-soft)]/35 blur-3xl" />
-        <div className="absolute bottom-[-8%] left-[20%] h-[220px] w-[220px] rounded-full bg-white/70 blur-3xl" />
-      </div>
-
       <div className="relative mx-auto max-w-[1440px] px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
         <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(220px,0.9fr)] xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)_minmax(320px,0.9fr)] xl:gap-8">
           <div className="pt-2">
@@ -96,7 +90,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative flex h-[360px] items-start justify-center overflow-hidden md:h-[420px] xl:h-[480px]">
+          <div className="relative order-3 flex h-[250px] items-start justify-center overflow-hidden md:order-none md:h-[420px] xl:h-[480px]">
             <div
               aria-hidden="true"
               className="absolute left-1/2 top-1/2 h-[min(90vw,420px)] w-[min(90vw,420px)] -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -112,11 +106,11 @@ export function Hero() {
               height={1443}
               priority
               sizes="(min-width: 1280px) 340px, (min-width: 768px) 290px, 260px"
-              className="relative z-10 h-auto w-[250px] max-w-full object-contain object-top sm:w-[270px] md:w-[290px] xl:w-[330px]"
+              className="relative z-10 h-auto w-[220px] max-w-full object-contain object-top sm:w-[250px] md:w-[290px] xl:w-[330px]"
             />
           </div>
 
-          <div className="relative md:col-span-2 xl:col-span-1">
+          <div className="relative order-2 md:order-none md:col-span-2 xl:col-span-1">
             <div className="rounded-[22px] border border-[var(--primary-border)]/55 bg-white/95 p-5 shadow-[0_18px_42px_rgba(15,39,71,0.08)] backdrop-blur-sm sm:p-6">
               <div className="mb-4">
                 <p className="text-[1.625rem] font-[800] leading-[1.1] tracking-[-0.05em] text-[var(--navy)]">
@@ -144,18 +138,6 @@ export function Hero() {
                   </Link>
                 ))}
               </div>
-            </div>
-            <div className="absolute -bottom-3 right-0 hidden items-center gap-2 rounded-xl border border-[#d6eee7] bg-white/95 px-3 py-2 text-[0.8125rem] font-[700] leading-tight text-[var(--navy)] shadow-[0_8px_20px_rgba(15,39,71,0.08)] sm:flex">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#dcf7ec] text-[#0a9b72]">
-                <ShieldCheck className="h-5 w-5" />
-              </span>
-              <span>
-                Trusted by
-                <br />
-                Thousands of
-                <br />
-                Railway Agents
-              </span>
             </div>
           </div>
         </div>
