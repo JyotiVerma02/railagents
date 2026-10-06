@@ -59,7 +59,7 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:grid-cols-12 lg:items-center">
 
           {/* ══ COL 1: LEFT TEXT ══ */}
-          <div className="flex min-w-0 flex-col justify-center py-4 pr-0 sm:py-5 md:py-4 md:pr-5 lg:col-span-5 xl:col-span-5 lg:py-4 lg:pr-4 xl:pr-6 2xl:pr-8 wide:pr-10">
+          <div className="flex min-w-0 flex-col items-center justify-center py-4 pr-0 text-center sm:py-5 md:items-start md:py-4 md:pr-5 md:text-left lg:col-span-5 xl:col-span-5 lg:py-4 lg:pr-4 xl:pr-6 2xl:pr-8 wide:pr-10">
 
             {/* Badge */}
             <span className="mb-4 inline-flex w-fit max-w-full items-center gap-2.5 rounded-full border border-[#f0deca] bg-[#fff8f2] py-[7px] pl-[7px] pr-4 text-[0.75rem] font-[700] text-[var(--navy)] shadow-[0_2px_10px_rgba(249,115,22,0.10)] sm:text-[0.8125rem] lg:text-[0.875rem]">
@@ -86,7 +86,7 @@ export function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-5 flex flex-wrap items-center gap-3 wide:mt-7">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3 wide:mt-7 md:justify-start">
               <InternalLink
                 href="/ask-nihal"
                 prefetch={false}
