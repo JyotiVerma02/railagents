@@ -38,10 +38,10 @@ export function Footer() {
 
   return (
     <footer className="mt-5 bg-[var(--navy)] text-white">
-      <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 sm:py-10 xl:px-8">
+      <div className="site-container py-8 sm:py-10">
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_1.1fr_1.2fr] lg:gap-9">
           <div>
-            <Logo variant="light" size="small" />
+            <Logo variant="light" />
             <p className="mt-3 max-w-[300px] text-sm leading-[1.6] text-white/75">
               Your trusted partner for all railway agent information, guides and
               support.

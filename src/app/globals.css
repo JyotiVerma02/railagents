@@ -77,3 +77,33 @@ input {
       url("/images/hero-railway-bg.png");
   }
 }
+
+.site-container {
+  width: 100%;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-left: 3.25rem;
+    padding-right: 3.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-container {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+  }
+}

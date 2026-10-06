@@ -49,15 +49,18 @@ export function Header() {
   }, []);
 
   return (
-    <header className="relative z-30 border-b border-[var(--primary-border)]/60 bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto grid h-[70px] max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-5 md:px-6 lg:px-7 xl:grid-cols-[auto_minmax(0,1fr)_auto] xl:gap-3 xl:px-8 min-[1366px]:!px-9 min-[1440px]:!px-10 2xl:!px-12">
+    <header className="sticky top-0 z-40 border-b border-[#f4e4d4]/90 bg-[#fffdfa]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(249,115,22,0.06)]">
+      {/* Top subtle orange highlight line */}
+      <div className="h-[2px] w-full bg-gradient-to-r from-[var(--primary)]/20 via-[var(--primary)] to-[var(--primary)]/20" />
+
+      <div className="site-container grid h-[68px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 xl:grid-cols-[auto_minmax(0,1fr)_auto] xl:gap-4">
         <div className="justify-self-start">
           <Logo />
         </div>
 
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-3 justify-self-center xl:flex xl:gap-3 2xl:gap-5"
+          className="hidden items-center gap-1.5 justify-self-center xl:flex 2xl:gap-2.5"
         >
           {navItems.map((item) => {
             const isActive =
@@ -70,13 +73,16 @@ export function Header() {
                 href={item.href}
                 prefetch={false}
                 aria-current={isActive ? "page" : undefined}
-                className={`relative whitespace-nowrap rounded-sm text-base font-[500] transition-colors duration-200 hover:-translate-y-px hover:text-[var(--primary-dark)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] ${
-                  isActive ? "text-[var(--navy)]" : "text-[var(--body-text)]"
-              }`}
+                className={`relative whitespace-nowrap rounded-full px-3.5 py-1.5 text-[0.9375rem] font-[600] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] ${
+                  isActive
+                    ? "bg-[#fff2e8] text-[var(--primary)] shadow-[0_2px_8px_rgba(249,115,22,0.12)]"
+                    : "text-[var(--navy)] hover:bg-[#fff7f0] hover:text-[var(--primary)]"
+                }`}
               >
                 {item.label}
                 {isActive ? (
-                <span className="absolute -bottom-[26px] left-0 h-[3px] w-full rounded-full bg-[var(--primary)]" />
+                  /* Glowing active indicator bar positioned directly under the text */
+                  <span className="absolute bottom-0.5 left-3.5 right-3.5 h-[2.5px] rounded-full bg-[var(--primary)] shadow-[0_0_8px_rgba(249,115,22,0.85)]" />
                 ) : null}
               </Link>
             );
@@ -90,7 +96,7 @@ export function Header() {
               aria-controls="more-navigation"
               aria-label="More navigation"
               onClick={() => setMoreOpen((open) => !open)}
-              className="inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-base font-[500] text-[var(--body-text)] transition-colors duration-200 hover:-translate-y-px hover:text-[var(--primary-dark)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)]"
+              className="inline-flex items-center gap-1 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[0.9375rem] font-[600] text-[var(--navy)] transition-all duration-200 hover:bg-[#fff7f0] hover:text-[var(--primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
             >
               More
               <ChevronDown
@@ -101,7 +107,7 @@ export function Header() {
             {moreOpen ? (
               <div
                 id="more-navigation"
-                className="absolute right-0 top-[calc(100%+14px)] z-50 w-40 rounded-xl border border-[var(--primary-border)] bg-white p-1.5 shadow-[0_16px_36px_rgba(18,48,85,0.14)]"
+                className="absolute right-0 top-[calc(100%+14px)] z-50 w-44 rounded-xl border border-[#f0deca] bg-white p-1.5 shadow-[0_16px_36px_rgba(15,39,71,0.14),0_4px_12px_rgba(249,115,22,0.08)]"
               >
                 {moreItems.map((item) => (
                   <Link
@@ -115,11 +121,11 @@ export function Header() {
                         : undefined
                     }
                     onClick={() => setMoreOpen(false)}
-                    className={`block rounded-lg px-3 py-2 text-base font-medium transition-colors hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] ${
+                    className={`block rounded-lg px-3 py-2 text-sm font-[600] transition-colors hover:bg-[#fff3e8] hover:text-[var(--primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] ${
                       pathname === item.href ||
                       pathname.startsWith(`${item.href}/`)
-                        ? "text-[var(--primary-dark)]"
-                        : "text-[var(--body-text)]"
+                        ? "bg-[#fff3e8] text-[var(--primary)]"
+                        : "text-[var(--navy)]"
                     }`}
                   >
                     {item.label}
@@ -137,7 +143,7 @@ export function Header() {
               href={siteConfig.social.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center rounded-full bg-[var(--primary)] px-4 py-2.5 text-[0.9375rem] font-[600] text-white shadow-[0_10px_22px_rgba(249,115,22,0.22)] transition-all duration-200 hover:-translate-y-px hover:bg-[var(--primary-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
+              className="inline-flex min-h-[42px] items-center rounded-full bg-gradient-to-r from-[var(--primary)] via-[#fa7c23] to-[#f97316] px-5 py-2 text-[0.9375rem] font-[600] text-white shadow-[0_4px_16px_rgba(249,115,22,0.38)] transition-all duration-200 hover:-translate-y-px hover:shadow-[0_6px_22px_rgba(249,115,22,0.52)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
             >
               Subscribe
             </a>
@@ -149,3 +155,4 @@ export function Header() {
     </header>
   );
 }
+

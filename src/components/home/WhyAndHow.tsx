@@ -28,7 +28,7 @@ export function WhyAndHow() {
   return (
     <>
       <section className="bg-[#fff9f5] py-12 sm:py-16 lg:py-20">
-        <div className="mx-auto grid max-w-[1440px] items-center gap-9 px-4 sm:px-6 md:grid-cols-[0.8fr_1.2fr] md:gap-10 lg:px-8 lg:gap-16">
+        <div className="site-container grid items-center gap-9 md:grid-cols-[0.8fr_1.2fr] md:gap-10 lg:gap-14">
           <div>
             <p className="mb-4 inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.12em] text-[#c2410c]">
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[var(--primary)]" />
@@ -66,7 +66,7 @@ export function WhyAndHow() {
           <Image src="/images/hero-railway-bg.png" alt="" fill sizes="40vw" className="object-cover object-right" />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
         </div>
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div className="max-w-[720px]">
             <p className="mb-3 inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.12em] text-[#c2410c]">
               <ShieldCheck className="h-4 w-4" />

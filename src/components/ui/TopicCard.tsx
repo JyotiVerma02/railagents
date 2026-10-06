@@ -22,17 +22,30 @@ export function TopicCard({ topic }: TopicCardProps) {
     <Link
       href={topic.href}
       prefetch={false}
-      className="group flex min-h-[104px] items-center justify-between gap-2 rounded-2xl border border-[#f1e4d9] bg-[linear-gradient(145deg,#fff,#fffaf6)] px-3 py-4 transition-all duration-200 hover:-translate-y-[3px] hover:border-[var(--primary)] hover:shadow-[0_10px_24px_rgba(11,53,103,0.06)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] sm:gap-3 sm:px-4"
+      className="group relative flex min-h-[92px] items-center justify-between gap-3 overflow-hidden rounded-2xl border border-[#f2e5d8] bg-gradient-to-b from-white via-[#fffcf9] to-[#fff8f2]/90 p-4 shadow-[0_4px_16px_rgba(15,39,71,0.04),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#f97316]/40 hover:shadow-[0_12px_28px_rgba(249,115,22,0.12),inset_0_1px_0_rgba(255,255,255,1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] sm:p-4.5"
     >
-      <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-        <div className={`flex h-10 w-10 shrink-0 items-center justify-center overflow-visible rounded-full transition-transform duration-200 group-hover:scale-[1.04] ${topic.iconClassName}`}>
+      {/* Top subtle hover accent bar */}
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+      <div className="flex min-w-0 items-center gap-3.5">
+        {/* Soft 3D elevated icon box */}
+        <div
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl shadow-[0_3px_10px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] transition-transform duration-300 group-hover:scale-105 ${topic.iconClassName}`}
+        >
           <Icon className="h-5 w-5 shrink-0" />
         </div>
-        <span className="min-w-0 text-base font-[700] leading-snug text-[var(--navy)]">
+
+        {/* Title */}
+        <span className="min-w-0 text-[1.0625rem] font-[700] leading-snug tracking-[-0.015em] text-[var(--navy)] transition-colors duration-200 group-hover:text-[var(--primary-dark)]">
           {topic.title}
         </span>
       </div>
-      <ArrowRight className="h-4 w-4 text-[var(--primary)] opacity-80 transition-transform duration-200 group-hover:translate-x-0.5" />
+
+      {/* Arrow in round action button */}
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#fff5eb] text-[var(--primary)] shadow-sm transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[var(--primary)] group-hover:text-white group-hover:shadow-[0_3px_10px_rgba(249,115,22,0.35)]">
+        <ArrowRight className="h-4 w-4" />
+      </span>
     </Link>
   );
 }
+

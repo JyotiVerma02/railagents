@@ -4,13 +4,18 @@ import { topics } from "@/data/topics";
 
 export function ExploreTopics() {
   return (
-    <section className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-      <SectionHeading title="Explore by Topic" href="/guides" linkText="View All Topics" />
-      <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 min-[1440px]:grid-cols-6 xl:gap-5">
-        {topics.map((topic) => (
-          <TopicCard key={topic.title} topic={topic} />
-        ))}
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#faf8f4]/60 via-white to-white py-12 sm:py-16">
+      <div className="site-container">
+        <SectionHeading title="Explore by Topic" href="/guides" linkText="View All Topics" />
+        
+        {/* 3-column grid for 6 topics = 2 complete rows, perfect desktop symmetry */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-5">
+          {topics.map((topic) => (
+            <TopicCard key={topic.title} topic={topic} />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
