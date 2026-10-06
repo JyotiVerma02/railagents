@@ -1,30 +1,21 @@
 import "server-only";
-
-import { siteConfig } from "@/config/site";
 import type { Video } from "@/types";
+import { formatYouTubeDuration } from "@/lib/youtube-format";
 
-const YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3";
-const REVALIDATE_SECONDS = 3600;
-
-type YouTubeThumbnail = {
-  url: string;
-  width?: number;
-  height?: number;
-};
-
-type YouTubeChannelResponse = {
-  items?: Array<{
-    contentDetails?: {
-      relatedPlaylists?: {
-        uploads?: string;
-      };
-    };
-  }>;
+type YouTubeThumbnails = {
+  default?: { url?: string };
+  medium?: { url?: string };
+  high?: { url?: string };
+  standard?: { url?: string };
+  maxres?: { url?: string };
 };
 
 type YouTubePlaylistResponse = {
   items?: Array<{
     snippet?: {
+      title?: string;
+      publishedAt?: string;
+      thumbnails?: YouTubeThumbnails;
       resourceId?: {
         videoId?: string;
       };
@@ -38,188 +29,158 @@ type YouTubeVideosResponse = {
     snippet?: {
       title?: string;
       publishedAt?: string;
-      thumbnails?: Record<string, YouTubeThumbnail | undefined>;
+      thumbnails?: YouTubeThumbnails;
     };
-    statistics?: {
-      viewCount?: string;
-    };
+    statistics?: { viewCount?: string };
+    contentDetails?: { duration?: string };
+  }>;
+};
+
+type YouTubeChannelResponse = {
+  items?: Array<{
     contentDetails?: {
-      duration?: string;
+      relatedPlaylists?: {
+        uploads?: string;
+      };
     };
   }>;
 };
 
-function getApiKey(): string | undefined {
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
-
-  if (!apiKey || !channelId) {
-    if (process.env.NODE_ENV !== "production") {
-      console.warn(
-        "YouTube videos are unavailable: set YOUTUBE_API_KEY and YOUTUBE_CHANNEL_ID.",
-      );
-    }
-    return undefined;
-  }
-
-  return apiKey;
-}
-
-async function youtubeRequest<T>(
-  resource: string,
-  params: Record<string, string>,
-): Promise<T> {
-  const apiKey = getApiKey();
-  if (!apiKey) {
-    throw new Error("YouTube API configuration is missing.");
-  }
-
-  const query = new URLSearchParams({ ...params, key: apiKey });
-  const response = await fetch(`${YOUTUBE_API_BASE}/${resource}?${query}`, {
-    next: { revalidate: REVALIDATE_SECONDS },
-  });
-
-  if (!response.ok) {
-    throw new Error(
-      `YouTube ${resource} request failed with status ${response.status}.`,
-    );
-  }
-
-  return (await response.json()) as T;
-}
-
-export function formatYouTubeDuration(isoDuration: string): string {
-  const match = isoDuration.match(
-    /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/,
-  );
-  if (!match) {
-    return "0:00";
-  }
-
-  const hours = Number(match[1] ?? 0);
-  const minutes = Number(match[2] ?? 0);
-  const seconds = Number(match[3] ?? 0);
-
-  if (hours > 0) {
-    return `${hours}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-  }
-
-  return `${minutes}:${String(seconds).padStart(2, "0")}`;
-}
-
-export function formatYouTubeViews(viewCount: number): string {
-  return `${new Intl.NumberFormat("en", {
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(viewCount)} views`;
-}
-
-export function formatYouTubeDate(publishedAt: string): string {
-  return new Date(publishedAt).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
-
-export function getYouTubeChannelVideosUrl(): string | null {
-  const channelUrl = siteConfig.social.youtube.trim().replace(/\/+$/, "");
-  if (channelUrl) {
-    return `${channelUrl}/videos`;
-  }
-
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
-  return channelId
-    ? `https://www.youtube.com/channel/${encodeURIComponent(channelId)}/videos`
-    : null;
-}
-
-function getBestThumbnail(
-  thumbnails: Record<string, YouTubeThumbnail | undefined> | undefined,
-  videoId: string,
-): string {
-  for (const quality of ["maxres", "standard", "high", "medium", "default"]) {
-    const thumbnail = thumbnails?.[quality];
-    if (thumbnail?.url) {
-      return thumbnail.url;
-    }
-  }
-
-  return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-}
-
-export async function getLatestVideos(limit = 3): Promise<Video[]> {
-  const apiKey = getApiKey();
-  const channelId = process.env.YOUTUBE_CHANNEL_ID;
-  if (!apiKey || !channelId) {
-    return [];
-  }
-
-  const safeLimit = Math.max(1, Math.min(Math.floor(limit), 50));
-
+export async function getLatestVideos(
+  limit = 3,
+): Promise<Video[]> {
   try {
-    const channel = await youtubeRequest<YouTubeChannelResponse>("channels", {
-      part: "contentDetails",
-      id: channelId,
-    });
-    const uploadsPlaylistId =
-      channel.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+    const apiKey = process.env.YOUTUBE_API_KEY;
+    const channelId = process.env.YOUTUBE_CHANNEL_ID;
 
-    if (!uploadsPlaylistId) {
-      throw new Error("The configured YouTube channel has no uploads playlist.");
-    }
+    if (!apiKey || !channelId) {
+      console.error("Missing YouTube API configuration");
 
-    const playlist = await youtubeRequest<YouTubePlaylistResponse>(
-      "playlistItems",
-      {
-        part: "snippet",
-        playlistId: uploadsPlaylistId,
-        maxResults: String(safeLimit),
-      },
-    );
-    const videoIds = (playlist.items ?? [])
-      .map((item) => item.snippet?.resourceId?.videoId)
-      .filter((videoId): videoId is string => Boolean(videoId));
-
-    if (videoIds.length === 0) {
       return [];
     }
 
-    const videos = await youtubeRequest<YouTubeVideosResponse>("videos", {
-      part: "snippet,statistics,contentDetails",
-      id: videoIds.join(","),
-    });
+    // 1. Get uploads playlist ID
+    const channelResponse = await fetch(
+      `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${apiKey}`,
+      {
+        next: {
+          revalidate: 3600,
+        },
+      },
+    );
 
-    return (videos.items ?? [])
+    if (!channelResponse.ok) {
+      console.error(
+        "YouTube channel API error:",
+        channelResponse.status,
+        await channelResponse.text(),
+      );
+
+      return [];
+    }
+
+    const channelData =
+      (await channelResponse.json()) as YouTubeChannelResponse;
+
+    const uploadsPlaylistId =
+      channelData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+
+    if (!uploadsPlaylistId) {
+      console.error("YouTube uploads playlist not found");
+
+      return [];
+    }
+
+    // 2. Get latest videos
+    const playlistResponse = await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=${limit}&key=${apiKey}`,
+      {
+        next: {
+          revalidate: 3600,
+        },
+      },
+    );
+
+    if (!playlistResponse.ok) {
+      console.error(
+        "YouTube playlist API error:",
+        playlistResponse.status,
+        await playlistResponse.text(),
+      );
+
+      return [];
+    }
+
+    const playlistData =
+      (await playlistResponse.json()) as YouTubePlaylistResponse;
+
+    const videoIds =
+      playlistData.items
+        ?.map((item) => {
+          return item.snippet?.resourceId?.videoId;
+        })
+        .filter((videoId): videoId is string => Boolean(videoId)) ?? [];
+
+    if (videoIds.length === 0) return [];
+
+    const videosResponse = await fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=${videoIds.join(",")}&key=${apiKey}`,
+      { next: { revalidate: 3600 } },
+    );
+
+    if (!videosResponse.ok) {
+      console.error(
+        "YouTube videos API error:",
+        videosResponse.status,
+        await videosResponse.text(),
+      );
+      return [];
+    }
+
+    const videosData = (await videosResponse.json()) as YouTubeVideosResponse;
+    const videos = (videosData.items ?? [])
       .flatMap((item): Video[] => {
-        const title = item.snippet?.title;
-        const publishedAt = item.snippet?.publishedAt;
+        const snippet = item.snippet;
+        const publishedAt = snippet?.publishedAt;
         const duration = item.contentDetails?.duration;
+        if (!snippet?.title || !publishedAt || !duration) return [];
 
-        if (!title || !publishedAt || !duration) {
-          return [];
-        }
+        const thumbnails = snippet.thumbnails;
+        const thumbnail =
+          thumbnails?.maxres?.url ??
+          thumbnails?.standard?.url ??
+          thumbnails?.high?.url ??
+          thumbnails?.medium?.url ??
+          thumbnails?.default?.url ??
+          `https://i.ytimg.com/vi/${item.id}/hqdefault.jpg`;
 
-        return [
-          {
-            id: item.id,
-            title,
-            thumbnail: getBestThumbnail(item.snippet?.thumbnails, item.id),
-            publishedAt,
-            views: Number(item.statistics?.viewCount ?? 0),
-            duration: formatYouTubeDuration(duration),
-            url: `https://www.youtube.com/watch?v=${encodeURIComponent(item.id)}`,
-          },
-        ];
+        return [{
+          id: item.id,
+          title: snippet.title,
+          thumbnail,
+          publishedAt,
+          views: Number(item.statistics?.viewCount ?? 0),
+          duration: formatYouTubeDuration(duration),
+          url: `https://www.youtube.com/watch?v=${item.id}`,
+        }];
       })
-      .sort(
-        (first, second) =>
-          Date.parse(second.publishedAt) - Date.parse(first.publishedAt),
-      )
-      .slice(0, safeLimit);
+      .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+      .slice(0, limit);
+
+    console.log("YouTube videos loaded:", videos);
+
+    return videos;
   } catch (error) {
-    console.error("Failed to fetch latest YouTube videos.", error);
+    console.error("YouTube API error:", error);
+
     return [];
   }
+}
+
+export function getYouTubeChannelVideosUrl() {
+  const channelId = process.env.YOUTUBE_CHANNEL_ID;
+
+  if (!channelId) return null;
+
+  return `https://www.youtube.com/channel/${channelId}/videos`;
 }
