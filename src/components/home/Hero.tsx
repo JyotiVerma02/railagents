@@ -28,11 +28,11 @@ const trustItems = [
 export function Hero() {
   return (
     /*
-     * Mobile  (<768):  auto height, min-h, single column stacked
-     * Tablet  (768+):  2 cols (text | card), Nihal hidden, fills viewport
-     * Desktop (1024+): 3 cols (text | Nihal | card), fills viewport
+     * Mobile  (<768):  single-column flow with a cropped portrait
+     * Tablet  (768+):  text and card above a cropped portrait
+     * Desktop (1024+): 3 cols (text | Nihal | card)
      */
-    <section className="relative flex flex-col overflow-hidden bg-[#faf8f5] min-h-[520px] md:h-[calc(100svh-72px)] md:min-h-[560px] md:max-h-[720px] lg:max-h-[760px] xl:max-h-[800px] 2xl:max-h-[830px] wide:max-h-[860px]">
+    <section className="relative flex flex-col overflow-hidden bg-[#faf8f5] min-h-[520px] md:h-auto md:min-h-[calc(100svh-72px)] md:max-h-none lg:h-[calc(100svh-72px)] lg:min-h-[560px] lg:max-h-[760px] xl:max-h-[800px] 2xl:max-h-[830px] wide:max-h-[860px]">
 
       {/* Railway background */}
       <div aria-hidden="true" className="hero-railway-backdrop absolute inset-0" />
@@ -53,7 +53,7 @@ export function Hero() {
         {/*
          * Grid:
          *  mobile  (<768px):  1 col, items stack
-         *  tablet  (768px+):  2 cols [text | card], Nihal hidden
+         *  tablet  (768px+):  2 cols [text | card], portrait follows
          *  desktop (1024px+): 3 cols via lg:grid-cols-12 with col-spans
          */}
         <div className="grid grid-cols-1 items-center gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:grid-cols-12 lg:items-center">
@@ -62,7 +62,7 @@ export function Hero() {
           <div className="flex min-w-0 flex-col justify-center py-8 pr-0 sm:py-10 md:py-8 md:pr-5 lg:col-span-5 xl:col-span-5 lg:py-10 lg:pr-4 xl:pr-6 2xl:pr-8 wide:pr-10">
 
             {/* Badge */}
-            <span className="mb-4 inline-flex w-fit max-w-full items-center gap-2.5 rounded-full border border-[#f0deca] bg-[#fff8f2] py-[7px] pl-[7px] pr-4 text-[0.75rem] font-[700] text-[var(--navy)] shadow-[0_2px_10px_rgba(249,115,22,0.10)] sm:text-[0.8125rem]">
+            <span className="mb-4 inline-flex w-fit max-w-full items-center gap-2.5 rounded-full border border-[#f0deca] bg-[#fff8f2] py-[7px] pl-[7px] pr-4 text-[0.75rem] font-[700] text-[var(--navy)] shadow-[0_2px_10px_rgba(249,115,22,0.10)] sm:text-[0.8125rem] lg:text-[0.875rem]">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[var(--primary)] text-white shadow-[0_2px_6px_rgba(249,115,22,0.35)]">
                 <Train className="h-3.5 w-3.5" />
               </span>
@@ -70,7 +70,7 @@ export function Hero() {
             </span>
 
             {/* H1 */}
-            <h1 className="max-w-[500px] text-[clamp(1.75rem,7vw,2.5rem)] font-[800] leading-[1.06] tracking-[-0.045em] text-[var(--navy)] md:max-w-full md:text-[clamp(1.9rem,3.8vw,2.8rem)] xl:max-w-[720px] xl:text-[clamp(3rem,3.3vw,4rem)] wide:max-w-[820px] wide:text-[clamp(4rem,3.4vw,5.25rem)]">
+            <h1 className="max-w-[500px] text-[clamp(1.75rem,7vw,2.5rem)] font-[800] leading-[1.06] tracking-[-0.045em] text-[var(--navy)] md:max-w-full md:text-[clamp(1.9rem,3.8vw,2.8rem)] lg:text-[clamp(2rem,4vw,2.9rem)] xl:max-w-[720px] xl:text-[clamp(3.1rem,3.4vw,4rem)] wide:max-w-[820px] wide:text-[clamp(4rem,3.4vw,5.25rem)]">
               Everything a
               <span className="block text-[var(--primary)]">
                 Travel Agent Needs
@@ -79,7 +79,7 @@ export function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="mt-3.5 max-w-[420px] text-[0.875rem] leading-[1.68] text-[#5c6b80] md:max-w-full xl:max-w-[520px] xl:text-[0.9rem] wide:max-w-[700px] wide:text-lg">
+            <p className="mt-3.5 max-w-[420px] text-[0.875rem] leading-[1.68] text-[#5c6b80] md:max-w-full lg:text-base xl:max-w-[520px] xl:text-[1.025rem] wide:max-w-[700px] wide:text-lg">
               Get clear answers, step-by-step guides and video tutorials for IRCTC
               agent registration, ticket booking, Tatkal, cancellation, refunds,
               TDR and more.
@@ -90,7 +90,7 @@ export function Hero() {
               <Link
                 href="/ask-nihal"
                 prefetch={false}
-                className="group inline-flex min-h-[46px] items-center gap-2.5 rounded-full bg-[var(--primary)] px-5 py-2.5 text-[0.9rem] font-[600] text-white shadow-[0_4px_18px_rgba(249,115,22,0.36)] transition-all duration-200 hover:bg-[var(--primary-hover)] hover:shadow-[0_6px_24px_rgba(249,115,22,0.46)] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] wide:min-h-[54px] wide:px-7 wide:text-base"
+                className="group inline-flex min-h-[46px] items-center gap-2.5 rounded-full bg-[var(--primary)] px-5 py-2.5 text-[0.9rem] font-[600] text-white shadow-[0_4px_18px_rgba(249,115,22,0.36)] transition-all duration-200 hover:bg-[var(--primary-hover)] hover:shadow-[0_6px_24px_rgba(249,115,22,0.46)] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] lg:text-[0.95rem] xl:text-base wide:min-h-[54px] wide:px-7"
               >
                 <MessageCircle className="h-[17px] w-[17px]" />
                 Ask Nihal Singh
@@ -100,7 +100,7 @@ export function Hero() {
               <Link
                 href="/videos"
                 prefetch={false}
-                className="inline-flex min-h-[46px] items-center gap-2.5 rounded-full border-2 border-[var(--primary)] bg-white px-5 py-2.5 text-[0.9rem] font-[600] text-[var(--primary)] transition-all duration-200 hover:bg-[#fff7f0] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] wide:min-h-[54px] wide:px-7 wide:text-base"
+                className="inline-flex min-h-[46px] items-center gap-2.5 rounded-full border-2 border-[var(--primary)] bg-white px-5 py-2.5 text-[0.9rem] font-[600] text-[var(--primary)] transition-all duration-200 hover:bg-[#fff7f0] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] lg:text-[0.95rem] xl:text-base wide:min-h-[54px] wide:px-7"
               >
                 <CirclePlay className="h-[17px] w-[17px]" />
                 Watch Video Guides
@@ -117,7 +117,7 @@ export function Hero() {
                   <span className="mb-1.5 flex h-8 w-8 items-center justify-center rounded-lg bg-[#fff3e8] text-[var(--primary)] wide:h-10 wide:w-10">
                     <Icon className="h-4 w-4 wide:h-5 wide:w-5" />
                   </span>
-                  <span className="text-[0.6875rem] font-[600] leading-[1.3] text-[var(--navy)] wide:text-sm">
+                  <span className="text-[0.6875rem] font-[600] leading-[1.3] text-[var(--navy)] lg:text-xs xl:text-[0.8125rem] wide:text-sm">
                     {lines[0]}
                     <br />
                     {lines[1]}
@@ -127,8 +127,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ══ COL 2: NIHAL SINGH — desktop only (lg+) ══ */}
-          <div className="relative hidden self-stretch overflow-hidden lg:col-span-3 xl:col-span-3 lg:flex lg:items-end lg:justify-center">
+          {/* ══ COL 2: NIHAL SINGH — cropped portrait on every screen ══ */}
+          <div className="relative order-2 mx-auto mt-3 h-[280px] w-full max-w-[290px] overflow-hidden md:col-span-2 md:row-start-2 md:mt-0 md:h-[360px] md:max-w-[420px] lg:order-none lg:col-span-3 lg:row-auto lg:mt-0 lg:h-auto lg:max-w-none lg:self-stretch lg:flex lg:items-end lg:justify-center">
             {/* Soft peach blob */}
             <div
               aria-hidden="true"
@@ -141,17 +141,14 @@ export function Hero() {
             />
 
             {/* Nihal image — top-anchored, waist cropped */}
-            <div
-              className="absolute inset-x-0 top-0 z-10"
-              style={{ bottom: "-26%" }}
-            >
+            <div className="absolute inset-x-0 top-0 bottom-[-105px] z-10 md:bottom-[-125px] lg:bottom-[-20%]">
               <Image
                 src="/images/nihal-singh-cutout.png"
                 alt="Nihal Singh"
                 fill
                 priority
                 sizes="(min-width: 1920px) 400px, (min-width: 1536px) 360px, (min-width: 1280px) 320px, 280px"
-                className="object-contain object-top"
+                className="object-contain object-bottom mix-blend-multiply drop-shadow-sm"
               />
             </div>
 
@@ -167,7 +164,7 @@ export function Hero() {
           </div>
 
           {/* ══ COL 3: ASK NIHAL CARD ══ */}
-          <div className="pb-8 sm:pb-10 md:pb-6 lg:col-span-4 xl:col-span-4 lg:flex lg:items-center lg:justify-end lg:pb-0 lg:pl-3 xl:pl-4 2xl:pl-6">
+          <div className="order-3 pb-8 sm:pb-10 md:order-none md:col-start-2 md:row-start-1 md:col-span-1 md:pb-6 lg:col-span-4 lg:row-auto lg:flex lg:items-center lg:justify-end lg:pb-0 lg:pl-3 xl:pl-4 2xl:pl-6">
             <div className="w-full max-w-sm rounded-2xl bg-white p-4 shadow-[0_8px_32px_rgba(15,39,71,0.09),0_2px_8px_rgba(15,39,71,0.04)] sm:p-5 md:max-w-[340px] lg:max-w-none wide:rounded-3xl wide:p-8">
 
               {/* Card header */}
@@ -178,7 +175,7 @@ export function Hero() {
                     <span className="text-[1.1rem]">👋</span>
                     <span className="mt-0.5 block">I&apos;m Nihal Singh</span>
                   </p>
-                  <p className="mt-2 text-[0.75rem] leading-[1.58] text-[#5c6b80] sm:text-[0.7813rem] wide:text-base">
+                  <p className="mt-2 text-[0.75rem] leading-[1.58] text-[#5c6b80] sm:text-[0.7813rem] lg:text-[0.8125rem] xl:text-[0.875rem] wide:text-base">
                     Ask Nihal Singh anything about railway ticket booking. Here
                     are some common questions:
                   </p>
@@ -195,7 +192,7 @@ export function Hero() {
                     key={question}
                     href={`/ask-nihal?q=${encodeURIComponent(question)}`}
                     prefetch={false}
-                    className={`group flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-[0.75rem] font-[500] leading-snug transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] sm:text-[0.7813rem] wide:min-h-12 wide:px-4 wide:text-base ${
+                    className={`group flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-[0.75rem] font-[500] leading-snug transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] sm:text-[0.7813rem] lg:text-[0.8125rem] xl:text-[0.875rem] wide:min-h-12 wide:px-4 wide:text-base ${
                       i === 1
                         ? "bg-[#fff3e8] text-[#7c3a0a] hover:bg-[#ffe8d0]"
                         : "bg-[#f4f5f7] text-[var(--navy)] hover:bg-[#fff3e8]"

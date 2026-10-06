@@ -53,7 +53,7 @@ export function WhyAndHow() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#fffdfa]/60 to-[#fffdfa]" />
         </div>
 
-        <div className="site-container relative z-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-12 wide:max-w-[1850px] wide:gap-14">
+        <div className="site-container relative z-10 grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-12 wide:gap-14">
           {/* LEFT CONTENT COLUMN */}
           <div className="flex flex-col items-start lg:col-span-5">
             {/* Top Tag */}
@@ -289,7 +289,7 @@ export function WhyAndHow() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
         </div>
-        <div className="site-container wide:max-w-[1850px]">
+        <div className="site-container">
           <div className="max-w-[720px] wide:max-w-[850px]">
             <p className="mb-3 inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.12em] text-[#c2410c] wide:text-base">
               <ShieldCheck className="h-4 w-4 wide:h-5 wide:w-5" />
