@@ -27,15 +27,17 @@ const trustItems = [
 
 export function Hero() {
   return (
-    /* Hero height = viewport minus 70px header — fills exactly above the fold */
-    <section
-      className="relative overflow-hidden border-b border-[#f0e8de] bg-[#faf8f4]"
-      style={{ minHeight: "calc(100vh - 70px)", maxHeight: "calc(100vh - 70px)" }}
-    >
-      {/* Railway background photo */}
+    /*
+     * Mobile  (<768):  auto height, min-h, single column stacked
+     * Tablet  (768+):  2 cols (text | card), Nihal hidden, fills viewport
+     * Desktop (1024+): 3 cols (text | Nihal | card), fills viewport
+     */
+    <section className="relative flex flex-col overflow-hidden bg-[#faf8f5] min-h-[520px] md:h-[calc(100svh-72px)] md:min-h-[560px] md:max-h-[720px] lg:max-h-[760px] xl:max-h-[800px] 2xl:max-h-[830px] wide:max-h-[860px]">
+
+      {/* Railway background */}
       <div aria-hidden="true" className="hero-railway-backdrop absolute inset-0" />
 
-      {/* Gradient overlay: cream on left, railway photo shows on right */}
+      {/* Gradient overlay */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -46,14 +48,21 @@ export function Hero() {
       />
 
       {/* ── MAIN CONTAINER ── */}
-      <div className="site-container relative flex h-full w-full flex-col">
-        {/* 3-column hero grid — stretches to fill available height */}
-        <div className="grid flex-1 items-stretch gap-y-3 pt-5 sm:pt-6 md:grid-cols-[1fr_minmax(200px,0.65fr)_minmax(300px,0.88fr)] md:gap-x-0 xl:grid-cols-[1fr_minmax(240px,0.62fr)_minmax(340px,0.85fr)] xl:gap-x-4 2xl:grid-cols-[1fr_minmax(260px,0.60fr)_minmax(360px,0.85fr)] 2xl:gap-x-6">
+      <div className="site-container relative z-10 flex flex-1 flex-col justify-center py-6 sm:py-8 lg:py-8 wide:py-10">
+
+        {/*
+         * Grid:
+         *  mobile  (<768px):  1 col, items stack
+         *  tablet  (768px+):  2 cols [text | card], Nihal hidden
+         *  desktop (1024px+): 3 cols via lg:grid-cols-12 with col-spans
+         */}
+        <div className="grid grid-cols-1 items-center gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:grid-cols-12 lg:items-center">
 
           {/* ══ COL 1: LEFT TEXT ══ */}
-          <div className="flex flex-col justify-center py-5 pr-3 md:pr-4">
+          <div className="flex min-w-0 flex-col justify-center py-8 pr-0 sm:py-10 md:py-8 md:pr-5 lg:col-span-5 xl:col-span-5 lg:py-10 lg:pr-4 xl:pr-6 2xl:pr-8 wide:pr-10">
+
             {/* Badge */}
-            <span className="mb-4 inline-flex w-fit items-center gap-2.5 rounded-full border border-[#f0deca] bg-[#fff8f2] py-[7px] pl-[7px] pr-4 text-[0.8125rem] font-[700] text-[var(--navy)] shadow-[0_2px_10px_rgba(249,115,22,0.10)]">
+            <span className="mb-4 inline-flex w-fit max-w-full items-center gap-2.5 rounded-full border border-[#f0deca] bg-[#fff8f2] py-[7px] pl-[7px] pr-4 text-[0.75rem] font-[700] text-[var(--navy)] shadow-[0_2px_10px_rgba(249,115,22,0.10)] sm:text-[0.8125rem]">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[var(--primary)] text-white shadow-[0_2px_6px_rgba(249,115,22,0.35)]">
                 <Train className="h-3.5 w-3.5" />
               </span>
@@ -61,25 +70,27 @@ export function Hero() {
             </span>
 
             {/* H1 */}
-            <h1 className="max-w-[500px] text-[clamp(2.25rem,4vw,3.5rem)] font-[800] leading-[1.06] tracking-[-0.045em] text-[var(--navy)]">
+            <h1 className="max-w-[500px] text-[clamp(1.75rem,7vw,2.5rem)] font-[800] leading-[1.06] tracking-[-0.045em] text-[var(--navy)] md:max-w-full md:text-[clamp(1.9rem,3.8vw,2.8rem)] xl:max-w-[720px] xl:text-[clamp(3rem,3.3vw,4rem)] wide:max-w-[820px] wide:text-[clamp(4rem,3.4vw,5.25rem)]">
               Everything a
-              <span className="block text-[var(--primary)]">Travel Agent Needs</span>
+              <span className="block text-[var(--primary)]">
+                Travel Agent Needs
+              </span>
               to Know.
             </h1>
 
             {/* Description */}
-            <p className="mt-3.5 max-w-[420px] text-[0.9rem] leading-[1.68] text-[#5c6b80]">
+            <p className="mt-3.5 max-w-[420px] text-[0.875rem] leading-[1.68] text-[#5c6b80] md:max-w-full xl:max-w-[520px] xl:text-[0.9rem] wide:max-w-[700px] wide:text-lg">
               Get clear answers, step-by-step guides and video tutorials for IRCTC
               agent registration, ticket booking, Tatkal, cancellation, refunds,
               TDR and more.
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="mt-5 flex flex-wrap items-center gap-3 wide:mt-7">
               <Link
                 href="/ask-nihal"
                 prefetch={false}
-                className="group inline-flex min-h-[46px] items-center gap-2.5 rounded-full bg-[var(--primary)] px-5 py-2.5 text-[0.9rem] font-[600] text-white shadow-[0_4px_18px_rgba(249,115,22,0.36)] transition-all duration-200 hover:bg-[var(--primary-hover)] hover:shadow-[0_6px_24px_rgba(249,115,22,0.46)] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
+                className="group inline-flex min-h-[46px] items-center gap-2.5 rounded-full bg-[var(--primary)] px-5 py-2.5 text-[0.9rem] font-[600] text-white shadow-[0_4px_18px_rgba(249,115,22,0.36)] transition-all duration-200 hover:bg-[var(--primary-hover)] hover:shadow-[0_6px_24px_rgba(249,115,22,0.46)] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] wide:min-h-[54px] wide:px-7 wide:text-base"
               >
                 <MessageCircle className="h-[17px] w-[17px]" />
                 Ask Nihal Singh
@@ -89,24 +100,24 @@ export function Hero() {
               <Link
                 href="/videos"
                 prefetch={false}
-                className="inline-flex min-h-[46px] items-center gap-2.5 rounded-full border-2 border-[var(--primary)] bg-white px-5 py-2.5 text-[0.9rem] font-[600] text-[var(--primary)] transition-all duration-200 hover:bg-[#fff7f0] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
+                className="inline-flex min-h-[46px] items-center gap-2.5 rounded-full border-2 border-[var(--primary)] bg-white px-5 py-2.5 text-[0.9rem] font-[600] text-[var(--primary)] transition-all duration-200 hover:bg-[#fff7f0] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] wide:min-h-[54px] wide:px-7 wide:text-base"
               >
                 <CirclePlay className="h-[17px] w-[17px]" />
                 Watch Video Guides
               </Link>
             </div>
 
-            {/* Trust items – 3 cards expanding to match the width of the CTA buttons above */}
-            <div className="mt-5 grid w-full max-w-[450px] grid-cols-3 gap-2 sm:gap-2.5">
+            {/* Trust items */}
+            <div className="mt-5 grid w-full max-w-[420px] grid-cols-3 gap-2 sm:gap-2.5 md:max-w-full lg:max-w-[450px] xl:max-w-[560px] wide:mt-7 wide:max-w-[720px] wide:gap-4">
               {trustItems.map(({ icon: Icon, lines }) => (
                 <div
                   key={lines[0]}
-                  className="flex flex-col items-center justify-center rounded-xl border border-[#f0e4d8] bg-white/95 px-2 py-2.5 text-center shadow-[0_2px_8px_rgba(249,115,22,0.06)] transition-all hover:border-[var(--primary-border)] hover:shadow-md"
+                  className="flex flex-col items-center justify-center rounded-xl border border-[#f0e4d8] bg-white/95 px-2 py-2.5 text-center shadow-[0_2px_8px_rgba(249,115,22,0.06)] transition-all hover:border-[var(--primary-border)] hover:shadow-md wide:px-4 wide:py-4"
                 >
-                  <span className="mb-1.5 flex h-8 w-8 items-center justify-center rounded-lg bg-[#fff3e8] text-[var(--primary)]">
-                    <Icon className="h-4 w-4" />
+                  <span className="mb-1.5 flex h-8 w-8 items-center justify-center rounded-lg bg-[#fff3e8] text-[var(--primary)] wide:h-10 wide:w-10">
+                    <Icon className="h-4 w-4 wide:h-5 wide:w-5" />
                   </span>
-                  <span className="text-[0.6875rem] font-[600] leading-[1.3] text-[var(--navy)]">
+                  <span className="text-[0.6875rem] font-[600] leading-[1.3] text-[var(--navy)] wide:text-sm">
                     {lines[0]}
                     <br />
                     {lines[1]}
@@ -116,9 +127,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ══ COL 2: NIHAL SINGH ══ */}
-          <div className="relative hidden overflow-hidden md:block">
-            {/* Soft peach organic blob — light faded, matches reference */}
+          {/* ══ COL 2: NIHAL SINGH — desktop only (lg+) ══ */}
+          <div className="relative hidden self-stretch overflow-hidden lg:col-span-3 xl:col-span-3 lg:flex lg:items-end lg:justify-center">
+            {/* Soft peach blob */}
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-[-6%]"
@@ -129,41 +140,45 @@ export function Hero() {
               }}
             />
 
-            {/* Nihal image – shifted down so thighs sit firmly grounded at section bottom */}
-            <div className="absolute inset-x-0 bottom-0 top-0 z-10 translate-y-12 sm:translate-y-16 xl:translate-y-20">
+            {/* Nihal image — top-anchored, waist cropped */}
+            <div
+              className="absolute inset-x-0 top-0 z-10"
+              style={{ bottom: "-26%" }}
+            >
               <Image
                 src="/images/nihal-singh-cutout.png"
                 alt="Nihal Singh"
                 fill
                 priority
-                sizes="(min-width: 1536px) 260px, (min-width: 1280px) 240px, 200px"
-                className="object-cover object-top drop-shadow-sm"
+                sizes="(min-width: 1920px) 400px, (min-width: 1536px) 360px, (min-width: 1280px) 320px, 280px"
+                className="object-contain object-top"
               />
             </div>
 
-            {/* Soft bottom fade at exact bottom edge */}
+            {/* Bottom fade */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-10"
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-24 xl:h-28 wide:h-32"
               style={{
                 background:
-                  "linear-gradient(to top, #faf8f4 0%, rgba(250,248,244,0.6) 60%, transparent 100%)",
+                  "linear-gradient(to top, #faf8f5 0%, rgba(250,248,244,0.96) 22%, rgba(250,248,244,0.68) 55%, rgba(250,248,244,0.2) 82%, transparent 100%)",
               }}
             />
           </div>
 
           {/* ══ COL 3: ASK NIHAL CARD ══ */}
-          <div className="flex items-center pb-5 pl-0 pt-2 md:pl-2 md:pt-5 xl:pl-3">
-            <div className="w-full rounded-2xl bg-white p-4 shadow-[0_8px_32px_rgba(15,39,71,0.09),0_2px_8px_rgba(15,39,71,0.04)] sm:p-5">
+          <div className="pb-8 sm:pb-10 md:pb-6 lg:col-span-4 xl:col-span-4 lg:flex lg:items-center lg:justify-end lg:pb-0 lg:pl-3 xl:pl-4 2xl:pl-6">
+            <div className="w-full max-w-sm rounded-2xl bg-white p-4 shadow-[0_8px_32px_rgba(15,39,71,0.09),0_2px_8px_rgba(15,39,71,0.04)] sm:p-5 md:max-w-[340px] lg:max-w-none wide:rounded-3xl wide:p-8">
+
               {/* Card header */}
               <div className="mb-3 flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-[1.25rem] font-[800] leading-[1.18] tracking-[-0.03em] text-[var(--navy)]">
+                  <p className="text-[1.15rem] font-[800] leading-[1.18] tracking-[-0.03em] text-[var(--navy)] sm:text-[1.25rem] wide:text-[1.75rem]">
                     Namaste!{" "}
                     <span className="text-[1.1rem]">👋</span>
                     <span className="mt-0.5 block">I&apos;m Nihal Singh</span>
                   </p>
-                  <p className="mt-2 text-[0.7813rem] leading-[1.58] text-[#5c6b80]">
+                  <p className="mt-2 text-[0.75rem] leading-[1.58] text-[#5c6b80] sm:text-[0.7813rem] wide:text-base">
                     Ask Nihal Singh anything about railway ticket booking. Here
                     are some common questions:
                   </p>
@@ -174,13 +189,13 @@ export function Hero() {
               </div>
 
               {/* Question rows */}
-              <div className="space-y-1.5">
+              <div className="space-y-1.5 wide:space-y-2.5">
                 {questions.map((question, i) => (
                   <Link
                     key={question}
                     href={`/ask-nihal?q=${encodeURIComponent(question)}`}
                     prefetch={false}
-                    className={`group flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-[0.7813rem] font-[500] leading-snug transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] ${
+                    className={`group flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-[0.75rem] font-[500] leading-snug transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] sm:text-[0.7813rem] wide:min-h-12 wide:px-4 wide:text-base ${
                       i === 1
                         ? "bg-[#fff3e8] text-[#7c3a0a] hover:bg-[#ffe8d0]"
                         : "bg-[#f4f5f7] text-[var(--navy)] hover:bg-[#fff3e8]"

@@ -4,7 +4,7 @@ import { topics } from "@/data/topics";
 
 export function ExploreTopics() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#faf8f4]/60 via-white to-white py-12 sm:py-16">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#faf8f4]/60 via-white to-white py-12 sm:py-16 2xl:py-20 wide:py-24">
       <div className="site-container">
         <SectionHeading title="Explore by Topic" href="/guides" linkText="View All Topics" />
         
@@ -18,4 +18,3 @@ export function ExploreTopics() {
     </section>
   );
 }
-

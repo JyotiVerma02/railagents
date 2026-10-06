@@ -23,7 +23,7 @@ export function MobileMenu() {
   const pathname = usePathname();
 
   return (
-    <div className="relative xl:hidden">
+    <div className="relative lg:hidden">
       <button
         type="button"
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}

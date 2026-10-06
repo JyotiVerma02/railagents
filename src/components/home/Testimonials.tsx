@@ -32,8 +32,8 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="site-container py-12 sm:py-16 lg:py-20">
-      <div className="grid gap-8 lg:grid-cols-[1.35fr_0.9fr] lg:gap-10">
+    <section className="site-container py-12 sm:py-16 lg:py-20 2xl:py-22 wide:py-24">
+      <div className="grid gap-8 lg:grid-cols-[1.35fr_0.9fr] lg:gap-10 wide:gap-14">
         {/* LEFT SIDE */}
         <div>
           <div className="mb-5 flex items-end justify-between gap-4">
@@ -42,7 +42,7 @@ export function Testimonials() {
                 What Our Users Say
               </p>
 
-              <h2 className="max-w-[760px] text-[clamp(2rem,3.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-[-0.045em] text-[var(--navy)]">
+              <h2 className="max-w-[760px] text-[clamp(2rem,3.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-[-0.045em] text-[var(--navy)] wide:max-w-[900px] wide:text-[3.75rem]">
 What Travel Agents Say About RailAgents              </h2>
             </div>
 
@@ -67,7 +67,7 @@ What Travel Agents Say About RailAgents              </h2>
           </div>
 
           {/* TESTIMONIAL CARDS */}
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {testimonials.map((testimonial) => (
               <article
                 key={testimonial.name}
@@ -89,6 +89,8 @@ What Travel Agents Say About RailAgents              </h2>
                   hover:-translate-y-1
                   hover:border-[#fdc99f]
                   hover:shadow-[0_16px_38px_rgba(15,39,71,0.08)]
+                  wide:min-h-[320px]
+                  wide:p-7
                 "
               >
                 {/* decorative orange glow */}
@@ -199,6 +201,8 @@ What Travel Agents Say About RailAgents              </h2>
             p-7
             shadow-[0_12px_35px_rgba(249,115,22,0.08)]
             lg:p-8
+            wide:min-h-[400px]
+            wide:p-10
           "
         >
           {/* train image */}
@@ -229,11 +233,11 @@ What Travel Agents Say About RailAgents              </h2>
             Ready to Get Started?
           </p>
 
-          <h2 className="max-w-[360px] text-[2rem] font-[800] leading-[1.1] tracking-[-0.045em] text-[var(--navy)]">
+          <h2 className="max-w-[360px] text-[2rem] font-[800] leading-[1.1] tracking-[-0.045em] text-[var(--navy)] wide:max-w-[460px] wide:text-[2.5rem]">
             Become an IRCTC Agent Today
           </h2>
 
-          <p className="mt-4 max-w-[390px] text-[0.92rem] leading-[1.65] text-slate-600">
+          <p className="mt-4 max-w-[390px] text-[0.92rem] leading-[1.65] text-slate-600 wide:max-w-[480px] wide:text-lg">
             Start your travel business with step-by-step guides and official
             IRCTC agent registration guidance.
           </p>
