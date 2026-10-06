@@ -9,7 +9,7 @@ export function SocialCards() {
       {/* =========================
           SECTION HEADER
       ========================== */}
-      <div className="text-center mb-10 sm:mb-12">
+      <div className="text-center mb-6 sm:mb-8">
         {/* Top Pill Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-[#ffd5c2] bg-[#fff3ec] px-4 py-1.5 text-xs font-bold text-[#f97316] shadow-sm mb-3">
           <span className="text-sm">👥</span> Stay Connected

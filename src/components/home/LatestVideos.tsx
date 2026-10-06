@@ -12,7 +12,7 @@ export async function LatestVideos() {
   const channelVideosUrl = getYouTubeChannelVideosUrl();
 
   return (
-    <section className="relative overflow-hidden bg-[#fff9f5] py-12 sm:py-16 lg:py-20 2xl:py-22 wide:py-24">
+    <section className="relative overflow-hidden bg-[#fff9f5] py-8 sm:py-10 lg:py-12 2xl:py-14 wide:py-14">
       {/* Background decoration */}
       <div
         aria-hidden="true"
@@ -29,7 +29,7 @@ export async function LatestVideos() {
             VIDEO SECTION HEADER
         ========================== */}
 
-        <div className="mb-8 sm:mb-10">
+        <div className="mb-5 sm:mb-6">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#f5dfcf] bg-white/70 px-3.5 py-2 text-[0.75rem] font-[800] uppercase tracking-[0.12em] text-[#e96713] shadow-sm backdrop-blur-md">
             <PlayCircle className="h-4 w-4" />
             Video Learning
@@ -72,8 +72,8 @@ export async function LatestVideos() {
             SOCIAL SECTION
         ========================== */}
 
-        <div className={videos.length > 0 ? "mt-14 sm:mt-18" : "mt-10"}>
-          <div className="relative overflow-hidden rounded-[32px] border border-[#f2e2d4] bg-white/80 px-5 py-8 shadow-[0_16px_45px_rgba(15,39,71,0.06)] backdrop-blur-xl sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+        <div className={videos.length > 0 ? "mt-8 sm:mt-10" : "mt-6"}>
+          <div className="relative overflow-hidden rounded-[32px] border border-[#f2e2d4] bg-white/80 px-5 py-6 shadow-[0_16px_45px_rgba(15,39,71,0.06)] backdrop-blur-xl sm:px-8 sm:py-8 lg:px-10 lg:py-9">
             {/* Background ambient glow */}
             <div
               aria-hidden="true"

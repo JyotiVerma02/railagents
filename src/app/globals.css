@@ -80,7 +80,7 @@ input {
 
 .site-container {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1380px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
@@ -103,15 +103,16 @@ input {
 
 @media (min-width: 1024px) {
   .site-container {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
 @media (min-width: 1280px) {
   .site-container {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    max-width: 1440px;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
   }
 }
 
@@ -121,32 +122,24 @@ input {
 
 @media (min-width: 1536px) {
   .site-container {
-    max-width: 1600px;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    max-width: 1480px;
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
   }
 }
 
 @media (min-width: 1920px) {
   .site-container {
-    max-width: 1650px;
+    max-width: 1520px;
     padding-left: 5rem;
     padding-right: 5rem;
   }
 }
 
-@media (min-width: 2200px) {
-  .site-container {
-    max-width: 1750px;
-    padding-left: 6rem;
-    padding-right: 6rem;
-  }
-}
-
 @media (min-width: 2400px) {
   .site-container {
-    max-width: 1800px;
-    padding-left: 7rem;
-    padding-right: 7rem;
+    max-width: 1520px;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }

@@ -38,7 +38,7 @@ export function Footer() {
 
   return (
     <footer className="mt-5 bg-[var(--navy)] text-white">
-      <div className="site-container py-8 sm:py-10 wide:py-14">
+      <div className="site-container py-6 sm:py-8 wide:py-10">
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_1.1fr_1.2fr] lg:gap-9 wide:gap-14">
           <div>
             <Logo variant="light" />

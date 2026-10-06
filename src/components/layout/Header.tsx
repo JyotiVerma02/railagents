@@ -57,7 +57,7 @@ export function Header() {
 
         <nav
           aria-label="Main navigation"
-          className="hidden min-w-0 items-center gap-1 justify-self-center lg:flex xl:gap-2 wide:gap-4"
+          className="hidden min-w-0 items-center gap-0.5 justify-self-center lg:flex xl:gap-2 wide:gap-4"
         >
           {navItems.map((item) => {
             const isActive =
@@ -70,7 +70,7 @@ export function Header() {
                 href={item.href}
                 prefetch={false}
                 aria-current={isActive ? "page" : undefined}
-                className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-[700] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:text-[0.875rem] ${
+                className={`whitespace-nowrap rounded-full px-1.5 py-1.5 text-xs font-[700] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:px-2.5 xl:text-[0.875rem] ${
                   isActive
                     ? "bg-[#ffefe6] text-[var(--primary)] shadow-sm"
                     : "text-[var(--navy)] hover:bg-[#fff7f0] hover:text-[var(--primary)]"
@@ -89,7 +89,7 @@ export function Header() {
               aria-controls="more-navigation"
               aria-label="More navigation"
               onClick={() => setMoreOpen((open) => !open)}
-              className="inline-flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-[700] text-[var(--navy)] transition-all duration-200 hover:bg-[#fff7f0] hover:text-[var(--primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:text-[0.875rem]"
+              className="inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-1.5 text-xs font-[700] text-[var(--navy)] transition-all duration-200 hover:bg-[#fff7f0] hover:text-[var(--primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:px-2.5 xl:text-[0.875rem]"
             >
               More
               <ChevronDown
@@ -136,7 +136,7 @@ export function Header() {
               href={siteConfig.social.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[42px] items-center gap-2 rounded-full bg-gradient-to-r from-[#ff5500] to-[#f97316] px-5 py-2 text-xs font-[700] text-white shadow-[0_4px_16px_rgba(249,115,22,0.3)] transition-all duration-200 hover:scale-105 hover:shadow-[0_6px_22px_rgba(249,115,22,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:text-[0.875rem] wide:min-h-[48px] wide:px-7 wide:text-base"
+              className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full bg-gradient-to-r from-[#ff5500] to-[#f97316] px-3 py-2 text-xs font-[700] text-white shadow-[0_4px_16px_rgba(249,115,22,0.3)] transition-all duration-200 hover:scale-105 hover:shadow-[0_6px_22px_rgba(249,115,22,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:min-h-[42px] xl:gap-2 xl:px-5 xl:text-[0.875rem] wide:min-h-[48px] wide:px-7 wide:text-base"
             >
               <Bell className="h-4 w-4" />
               Subscribe

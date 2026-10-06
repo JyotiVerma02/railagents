@@ -32,7 +32,7 @@ export function Hero() {
      * Tablet  (768+):  text and card above a cropped portrait
      * Desktop (1024+): 3 cols (text | Nihal | card)
      */
-    <section className="relative flex flex-col overflow-hidden bg-[#faf8f5] min-h-[520px] md:h-auto md:min-h-[calc(100svh-72px)] md:max-h-none lg:h-[calc(100svh-72px)] lg:min-h-[560px] lg:max-h-[760px] xl:max-h-[800px] 2xl:max-h-[830px] wide:max-h-[860px]">
+    <section className="relative flex flex-col overflow-hidden bg-[#faf8f5] min-h-[460px] md:h-auto md:min-h-0 lg:h-[calc(100svh-72px)] lg:min-h-[500px] lg:max-h-[640px] xl:max-h-[660px] 2xl:max-h-[680px] wide:max-h-[700px]">
 
       {/* Railway background */}
       <div aria-hidden="true" className="hero-railway-backdrop absolute inset-0" />
@@ -48,7 +48,7 @@ export function Hero() {
       />
 
       {/* ── MAIN CONTAINER ── */}
-      <div className="site-container relative z-10 flex flex-1 flex-col justify-center py-6 sm:py-8 lg:py-8 wide:py-10">
+      <div className="site-container relative z-10 flex flex-1 flex-col justify-center py-4 sm:py-5 lg:py-5 wide:py-6">
 
         {/*
          * Grid:
@@ -59,7 +59,7 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:grid-cols-12 lg:items-center">
 
           {/* ══ COL 1: LEFT TEXT ══ */}
-          <div className="flex min-w-0 flex-col justify-center py-8 pr-0 sm:py-10 md:py-8 md:pr-5 lg:col-span-5 xl:col-span-5 lg:py-10 lg:pr-4 xl:pr-6 2xl:pr-8 wide:pr-10">
+          <div className="flex min-w-0 flex-col justify-center py-4 pr-0 sm:py-5 md:py-4 md:pr-5 lg:col-span-5 xl:col-span-5 lg:py-4 lg:pr-4 xl:pr-6 2xl:pr-8 wide:pr-10">
 
             {/* Badge */}
             <span className="mb-4 inline-flex w-fit max-w-full items-center gap-2.5 rounded-full border border-[#f0deca] bg-[#fff8f2] py-[7px] pl-[7px] pr-4 text-[0.75rem] font-[700] text-[var(--navy)] shadow-[0_2px_10px_rgba(249,115,22,0.10)] sm:text-[0.8125rem] lg:text-[0.875rem]">
@@ -70,7 +70,7 @@ export function Hero() {
             </span>
 
             {/* H1 */}
-            <h1 className="max-w-[500px] text-[clamp(1.75rem,7vw,2.5rem)] font-[800] leading-[1.06] tracking-[-0.045em] text-[var(--navy)] md:max-w-full md:text-[clamp(1.9rem,3.8vw,2.8rem)] lg:text-[clamp(2rem,4vw,2.9rem)] xl:max-w-[720px] xl:text-[clamp(3.1rem,3.4vw,4rem)] wide:max-w-[820px] wide:text-[clamp(4rem,3.4vw,5.25rem)]">
+            <h1 className="max-w-[500px] text-[clamp(1.75rem,7vw,2.5rem)] font-[800] leading-[1.06] tracking-[-0.045em] text-[var(--navy)] md:max-w-full md:text-[clamp(1.9rem,3.8vw,2.8rem)] lg:text-[clamp(2rem,4vw,2.9rem)] xl:max-w-[720px] xl:text-[clamp(3.1rem,3.4vw,4rem)] wide:max-w-[820px] wide:text-[clamp(3.5rem,3.4vw,4rem)]">
               Everything a
               <span className="block text-[var(--primary)]">
                 Travel Agent Needs
@@ -127,20 +127,37 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ══ COL 2: NIHAL SINGH — cropped portrait on every screen ══ */}
-          <div className="relative order-2 mx-auto mt-3 h-[280px] w-full max-w-[290px] overflow-hidden md:col-span-2 md:row-start-2 md:mt-0 md:h-[360px] md:max-w-[420px] lg:order-none lg:col-span-3 lg:row-auto lg:mt-0 lg:h-auto lg:max-w-none lg:self-stretch lg:flex lg:items-end lg:justify-center">
-            {/* Soft peach blob */}
+          {/* ══ COL 2: NIHAL SINGH — ATTRACTIVE LAYERED HERO BACKDROP ══ */}
+          <div className="relative order-2 mx-auto mt-3 h-[290px] w-full max-w-[310px] overflow-hidden md:col-span-2 md:row-start-2 md:mt-0 md:h-[370px] md:max-w-[440px] lg:order-none lg:col-span-3 lg:row-auto lg:mt-0 lg:h-auto lg:max-w-none lg:self-stretch lg:flex lg:items-end lg:justify-center">
+            {/* Outer warm ambient glow */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-[-6%]"
-              style={{
-                background:
-                  "radial-gradient(ellipse 78% 86% at 50% 54%, rgba(253,186,116,0.55) 0%, rgba(251,146,60,0.32) 30%, rgba(253,211,170,0.18) 58%, rgba(254,237,215,0.08) 75%, transparent 88%)",
-                borderRadius: "62% 58% 70% 50% / 60% 68% 50% 64%",
-              }}
+              className="pointer-events-none absolute inset-x-[5%] top-[8%] bottom-[5%] rounded-full bg-gradient-to-t from-[#fed7aa]/50 via-[#fde68a]/40 to-transparent blur-2xl"
             />
 
-            {/* Nihal image — top-anchored, waist cropped */}
+            {/* Elegant Arch Backdrop */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-[10%] top-[10%] bottom-[0] rounded-t-[120px] sm:rounded-t-[140px] border border-white/80 bg-gradient-to-b from-[#fff3e8] via-[#ffebd6] to-[#ffe5cc] shadow-[0_16px_40px_rgba(249,115,22,0.12),inset_0_2px_10px_rgba(255,255,255,0.8)]"
+            />
+
+            {/* Subtle halo ring behind turban */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-[12%] h-44 w-44 sm:h-52 sm:w-52 rounded-full border border-dashed border-[#f97316]/25 animate-[spin_40s_linear_infinite]"
+            />
+
+            {/* Sparkle accents floating top-right & top-left */}
+            <div className="pointer-events-none absolute top-[11%] right-[14%] z-20 text-[#f97316]">
+              <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 drop-shadow-sm" />
+            </div>
+            <div className="pointer-events-none absolute top-[16%] left-[15%] z-20 text-amber-500/80">
+              <svg className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+              </svg>
+            </div>
+
+            {/* Nihal image — crisp, clear, natural colors with soft shadow */}
             <div className="absolute inset-x-0 top-0 bottom-[-105px] z-10 md:bottom-[-125px] lg:bottom-[-20%]">
               <Image
                 src="/images/nihal-singh-cutout.png"
@@ -148,7 +165,7 @@ export function Hero() {
                 fill
                 priority
                 sizes="(min-width: 1920px) 400px, (min-width: 1536px) 360px, (min-width: 1280px) 320px, 280px"
-                className="object-contain object-bottom mix-blend-multiply drop-shadow-sm"
+                className="object-contain object-bottom drop-shadow-[0_10px_25px_rgba(15,39,71,0.12)]"
               />
             </div>
 

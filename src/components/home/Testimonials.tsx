@@ -32,7 +32,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="site-container py-12 sm:py-16 lg:py-20 2xl:py-22 wide:py-24">
+    <section className="site-container py-8 sm:py-10 lg:py-12 2xl:py-14 wide:py-14">
       <div className="grid gap-8 lg:grid-cols-[1.35fr_0.9fr] lg:gap-10 wide:gap-14">
         {/* LEFT SIDE */}
         <div>

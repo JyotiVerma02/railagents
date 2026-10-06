@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export function FinalAskCta() {
   return (
-    <section className="site-container pb-14 pt-2 sm:pb-16 lg:pb-20 wide:pb-28">
+    <section className="site-container pb-10 pt-2 sm:pb-12 lg:pb-14 wide:pb-16">
       <div className="relative isolate grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-3 gap-y-4 overflow-hidden rounded-2xl border border-[#ffe1c2] bg-[#fff7ed] px-3 py-5 min-[380px]:grid-cols-[48px_minmax(0,1fr)] min-[380px]:px-4 sm:grid-cols-[74px_minmax(0,1fr)_auto] sm:gap-7 sm:px-8 sm:py-6 wide:gap-10 wide:px-12 wide:py-9">
         <div aria-hidden="true" className="absolute right-0 -top-20 -z-10 h-64 w-64 rounded-full bg-white/70 blur-3xl" />
         <div className="relative h-[72px] w-[40px] shrink-0 min-[380px]:h-[78px] min-[380px]:w-[48px] sm:h-[100px] sm:w-[74px]">

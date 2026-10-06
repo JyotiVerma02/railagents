@@ -39,7 +39,7 @@ export function WhyAndHow() {
       {/* =========================================================
           SECTION 1: WHY RAILAGENTS (ULTRA-WIDE ENHANCED FOR 2560px)
       ========================================================== */}
-      <section className="relative overflow-hidden bg-[#fffdfa] py-14 sm:py-20 lg:py-24 2xl:py-28 wide:py-28">
+      <section className="relative overflow-hidden bg-[#fffdfa] py-8 sm:py-12 lg:py-14 2xl:py-16 wide:py-16">
         {/* Train graphic in bottom left */}
         <div className="pointer-events-none absolute -bottom-6 left-0 -z-0 h-60 w-1/2 max-w-lg opacity-25 sm:opacity-35 wide:h-80 wide:max-w-xl">
           <Image
@@ -278,7 +278,7 @@ export function WhyAndHow() {
       {/* =========================================================
           SECTION 2: HOW IT WORKS (ULTRA-WIDE ENHANCED FOR 2560px)
       ========================================================== */}
-      <section className="relative isolate overflow-hidden py-12 sm:py-16 lg:py-20 2xl:py-24 wide:py-28">
+      <section className="relative isolate overflow-hidden py-8 sm:py-10 lg:py-12 2xl:py-14 wide:py-14">
         <div className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-2/5 opacity-[0.08]">
           <Image
             src="/images/hero-railway-bg.png"
