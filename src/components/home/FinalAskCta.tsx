@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import { ArrowRight } from "lucide-react";
 
 export function FinalAskCta() {
@@ -25,14 +25,14 @@ export function FinalAskCta() {
             Get a clear answer and take your next step with confidence.
           </p>
         </div>
-        <Link
+        <InternalLink
           href="/ask-nihal"
           prefetch={false}
           className="group col-span-2 col-start-1 inline-flex min-h-12 w-fit max-w-full items-center justify-center gap-2 rounded-lg bg-[var(--primary)] px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--primary-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] min-[380px]:col-start-2 min-[380px]:col-span-1 sm:col-start-auto sm:px-5 sm:text-base"
         >
           Ask Nihal Singh
           <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
+        </InternalLink>
       </div>
     </section>
   );

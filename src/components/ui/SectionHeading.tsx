@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 
 type SectionHeadingProps = {
   title: string;
@@ -34,10 +34,10 @@ export function SectionHeading({
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         ) : (
-          <Link href={href} prefetch={false} className={className}>
+          <InternalLink href={href} prefetch={false} className={className}>
             {linkText}
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </Link>
+          </InternalLink>
         )
       ) : null}
     </div>

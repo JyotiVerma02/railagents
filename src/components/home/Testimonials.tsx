@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import {
   ArrowLeft,
   ArrowRight,
@@ -243,7 +243,7 @@ What Travel Agents Say About RailAgents              </h2>
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link
+            <InternalLink
               href="/irctc-agent-registration"
               prefetch={false}
               className="
@@ -265,9 +265,9 @@ What Travel Agents Say About RailAgents              </h2>
             >
               Start Registration
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </InternalLink>
 
-            <Link
+            <InternalLink
               href="/about"
               prefetch={false}
               className="
@@ -288,7 +288,7 @@ What Travel Agents Say About RailAgents              </h2>
               "
             >
               Learn More
-            </Link>
+            </InternalLink>
           </div>
         </aside>
       </div>

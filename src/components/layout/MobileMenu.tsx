@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SearchForm } from "@/components/layout/SearchForm";
+import { InternalLink } from "@/components/ui/InternalLink";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -42,16 +42,11 @@ export function MobileMenu() {
         >
           <nav aria-label="Mobile navigation" className="grid gap-1">
             {navItems.map((item) => (
-              <Link
+              <InternalLink
                 key={item.href}
                 href={item.href}
                 prefetch={false}
-                aria-current={
-                  pathname === item.href ||
-                  (item.href !== "/" && pathname.startsWith(`${item.href}/`))
-                    ? "page"
-                    : undefined
-                }
+                current={pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`))}
                 onClick={() => setIsOpen(false)}
                 className={`rounded-lg px-3 py-2.5 text-base font-medium transition-colors hover:bg-[var(--primary-soft)] hover:text-[var(--primary-dark)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] ${
                   pathname === item.href ||
@@ -61,7 +56,7 @@ export function MobileMenu() {
                 }`}
               >
                 {item.label}
-              </Link>
+              </InternalLink>
             ))}
           </nav>
 

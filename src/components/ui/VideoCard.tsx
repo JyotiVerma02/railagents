@@ -49,7 +49,7 @@ export function VideoCard({ video }: VideoCardProps) {
         {isPreviewing ? (
           <iframe
             key={video.id}
-            src={`https://www.youtube.com/embed/${encodeURIComponent(video.id)}?autoplay=1&mute=1&playsinline=1&rel=0`}
+            src={`https://www.youtube.com/embed/${encodeURIComponent(video.id)}?autoplay=1&mute=0&playsinline=1&rel=0`}
             title={`Preview: ${video.title}`}
             className="absolute inset-0 h-full w-full border-0"
             allow="autoplay; encrypted-media; picture-in-picture; web-share"

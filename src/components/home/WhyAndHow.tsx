@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import {
   ArrowRight,
   BadgeCheck,
@@ -90,14 +90,14 @@ export function WhyAndHow() {
             </p>
 
             {/* CTA Button */}
-            <Link
+            <InternalLink
               href="/about"
               prefetch={false}
               className="group mt-7 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#ff5500] to-[#f97316] px-7 py-3.5 text-sm font-bold text-white shadow-[0_8px_22px_rgba(249,115,22,0.32)] transition-all duration-200 hover:scale-105 hover:shadow-[0_12px_28px_rgba(249,115,22,0.42)] active:scale-100 sm:text-base wide:px-8 wide:py-4 wide:text-base"
             >
               Know More About Us
               <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 wide:h-5 wide:w-5" />
-            </Link>
+            </InternalLink>
           </div>
 
           {/* RIGHT CARDS COLUMN */}

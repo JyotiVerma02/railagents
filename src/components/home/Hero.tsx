@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowRight,
   BookOpen,
@@ -10,6 +9,7 @@ import {
   Train,
   Users,
 } from "lucide-react";
+import { InternalLink } from "@/components/ui/InternalLink";
 
 const questions = [
   "How does Tatkal booking work?",
@@ -87,7 +87,7 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="mt-5 flex flex-wrap items-center gap-3 wide:mt-7">
-              <Link
+              <InternalLink
                 href="/ask-nihal"
                 prefetch={false}
                 className="group inline-flex min-h-[46px] items-center gap-2.5 rounded-full bg-[var(--primary)] px-5 py-2.5 text-[0.9rem] font-[600] text-white shadow-[0_4px_18px_rgba(249,115,22,0.36)] transition-all duration-200 hover:bg-[var(--primary-hover)] hover:shadow-[0_6px_24px_rgba(249,115,22,0.46)] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] lg:text-[0.95rem] xl:text-base wide:min-h-[54px] wide:px-7"
@@ -95,16 +95,16 @@ export function Hero() {
                 <MessageCircle className="h-[17px] w-[17px]" />
                 Ask Nihal Singh
                 <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-              </Link>
+              </InternalLink>
 
-              <Link
+              <InternalLink
                 href="/videos"
                 prefetch={false}
                 className="inline-flex min-h-[46px] items-center gap-2.5 rounded-full border-2 border-[var(--primary)] bg-white px-5 py-2.5 text-[0.9rem] font-[600] text-[var(--primary)] transition-all duration-200 hover:bg-[#fff7f0] hover:-translate-y-px active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] lg:text-[0.95rem] xl:text-base wide:min-h-[54px] wide:px-7"
               >
                 <CirclePlay className="h-[17px] w-[17px]" />
                 Watch Video Guides
-              </Link>
+              </InternalLink>
             </div>
 
             {/* Trust items */}
@@ -205,7 +205,7 @@ export function Hero() {
               {/* Question rows */}
               <div className="space-y-1.5 wide:space-y-2.5">
                 {questions.map((question, i) => (
-                  <Link
+                  <InternalLink
                     key={question}
                     href={`/ask-nihal?q=${encodeURIComponent(question)}`}
                     prefetch={false}
@@ -225,7 +225,7 @@ export function Hero() {
                     >
                       <ArrowRight className="h-3 w-3" />
                     </span>
-                  </Link>
+                  </InternalLink>
                 ))}
               </div>
             </div>

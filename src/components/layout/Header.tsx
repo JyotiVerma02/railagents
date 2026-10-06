@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Bell } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { Logo } from "@/components/layout/Logo";
 import { SearchForm } from "@/components/layout/SearchForm";
+import { InternalLink } from "@/components/ui/InternalLink";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -65,11 +65,11 @@ export function Header() {
               (item.href !== "/" && pathname.startsWith(`${item.href}/`));
 
             return (
-              <Link
+              <InternalLink
                 key={item.href}
                 href={item.href}
                 prefetch={false}
-                aria-current={isActive ? "page" : undefined}
+                current={isActive}
                 className={`whitespace-nowrap rounded-full px-1.5 py-1.5 text-xs font-[700] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:px-2.5 xl:text-[0.875rem] ${
                   isActive
                     ? "bg-[#ffefe6] text-[var(--primary)] shadow-sm"
@@ -77,7 +77,7 @@ export function Header() {
                 }`}
               >
                 {item.label}
-              </Link>
+              </InternalLink>
             );
           })}
 
@@ -103,16 +103,11 @@ export function Header() {
                 className="absolute right-0 top-[calc(100%+14px)] z-50 w-44 rounded-xl border border-[#f0deca] bg-white p-1.5 shadow-[0_16px_36px_rgba(15,39,71,0.14),0_4px_12px_rgba(249,115,22,0.08)]"
               >
                 {moreItems.map((item) => (
-                  <Link
+                  <InternalLink
                     key={item.href}
                     href={item.href}
                     prefetch={false}
-                    aria-current={
-                      pathname === item.href ||
-                      pathname.startsWith(`${item.href}/`)
-                        ? "page"
-                        : undefined
-                    }
+                    current={pathname === item.href || pathname.startsWith(`${item.href}/`)}
                     onClick={() => setMoreOpen(false)}
                     className={`block rounded-lg px-3 py-2 text-sm font-[600] transition-colors hover:bg-[#fff3e8] hover:text-[var(--primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--primary)] ${
                       pathname === item.href ||
@@ -122,7 +117,7 @@ export function Header() {
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </InternalLink>
                 ))}
               </div>
             ) : null}

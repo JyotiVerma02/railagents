@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import { Search, ArrowRight } from "lucide-react";
 
 type SearchFormProps = {
@@ -10,15 +9,8 @@ type SearchFormProps = {
 
 export function SearchForm({ mobile = false }: SearchFormProps) {
   const [query, setQuery] = useState("");
-  const router = useRouter();
-
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const trimmedQuery = query.trim();
-
-    if (trimmedQuery) {
-      router.push(`/search?q=${encodeURIComponent(trimmedQuery)}`);
-    }
   }
 
   return (
@@ -40,7 +32,10 @@ export function SearchForm({ mobile = false }: SearchFormProps) {
       <button
         type="submit"
         aria-label="Submit search"
-        className="flex h-6 w-6 shrink-0 items-center justify-center text-[#f97316] transition-transform hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
+        aria-disabled="true"
+        title="Search is coming soon"
+        disabled
+        className="flex h-6 w-6 shrink-0 cursor-not-allowed items-center justify-center text-[#f97316]"
       >
         <ArrowRight className="h-3.5 w-3.5" />
       </button>

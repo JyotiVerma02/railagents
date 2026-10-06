@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   FaFacebookF,
   FaInstagram,
@@ -8,6 +7,7 @@ import {
 } from "react-icons/fa6";
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/layout/Logo";
+import { InternalLink } from "@/components/ui/InternalLink";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -112,13 +112,13 @@ function FooterLinkColumn({
       <ul className="mt-2.5 space-y-2 text-sm text-white/75">
         {items.map(({ label, href }) => (
           <li key={href}>
-            <Link
+            <InternalLink
               href={href}
               prefetch={false}
               className="transition-colors hover:text-[var(--primary-light)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
             >
               {label}
-            </Link>
+            </InternalLink>
           </li>
         ))}
       </ul>
