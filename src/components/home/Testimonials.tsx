@@ -1,6 +1,5 @@
 import { InternalLink } from "@/components/ui/InternalLink";
 import {
-  ArrowLeft,
   ArrowRight,
   Quote,
   Star,
@@ -43,27 +42,10 @@ export function Testimonials() {
               </p>
 
               <h2 className="max-w-[760px] text-[clamp(2rem,3.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-[-0.045em] text-[var(--navy)] wide:max-w-[900px] wide:text-[3.75rem]">
-What Travel Agents Say About RailAgents              </h2>
+                What Travel Agents Say About RailAgents
+              </h2>
             </div>
 
-            <div
-              className="hidden items-center gap-2 sm:flex"
-              aria-label="Testimonial navigation"
-            >
-              <button
-                type="button"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#fed7aa] bg-white text-[#c2410c] shadow-sm transition hover:border-[#f97316] hover:bg-[#fff7ed]"
-              >
-                <ArrowLeft className="h-4 w-4" />
-              </button>
-
-              <button
-                type="button"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#fed7aa] bg-white text-[#c2410c] shadow-sm transition hover:border-[#f97316] hover:bg-[#fff7ed]"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </div>
           </div>
 
           {/* TESTIMONIAL CARDS */}

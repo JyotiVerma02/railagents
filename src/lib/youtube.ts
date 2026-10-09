@@ -167,8 +167,6 @@ export async function getLatestVideos(
       .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
       .slice(0, limit);
 
-    console.log("YouTube videos loaded:", videos);
-
     return videos;
   } catch (error) {
     console.error("YouTube API error:", error);
