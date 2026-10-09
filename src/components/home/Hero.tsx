@@ -144,7 +144,7 @@ export function Hero() {
             {/* Subtle halo ring behind turban */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute top-[12%] h-44 w-44 sm:h-52 sm:w-52 rounded-full border border-dashed border-[#f97316]/25 animate-[spin_40s_linear_infinite]"
+              className="pointer-events-none absolute top-[12%] h-44 w-44 rounded-full border border-dashed border-[#f97316]/25 animate-[spin_40s_linear_infinite] motion-reduce:animate-none sm:h-52 sm:w-52"
             />
 
             {/* Sparkle accents floating top-right & top-left */}

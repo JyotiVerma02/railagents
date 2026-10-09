@@ -6,8 +6,16 @@ import { LatestVideos } from "@/components/home/LatestVideos";
 import { WhyAndHow } from "@/components/home/WhyAndHow";
 import { Testimonials } from "@/components/home/Testimonials";
 import { FinalAskCta } from "@/components/home/FinalAskCta";
+import { siteConfig } from "@/config/site";
 
 export const revalidate = 3600;
+
+export const metadata = {
+  title: "Railway Agent Guidance, IRCTC Help & Video Guides",
+  description:
+    "Explore practical railway agent guidance, IRCTC registration information, ticket booking help, and video tutorials from RailAgents.",
+  alternates: { canonical: siteConfig.url },
+};
 
 export default function Home() {
   return (

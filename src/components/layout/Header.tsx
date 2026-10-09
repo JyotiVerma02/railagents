@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Bell } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { siteConfig } from "@/config/site";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { Logo } from "@/components/layout/Logo";
@@ -21,6 +22,8 @@ const moreItems = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+const whatsappMessage = encodeURIComponent(siteConfig.whatsapp.message);
+const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.number}?text=${whatsappMessage}`;
 
 export function Header() {
   const [moreOpen, setMoreOpen] = useState(false);
@@ -126,17 +129,16 @@ export function Header() {
 
         <div className="hidden shrink-0 items-center gap-2 justify-self-end lg:flex xl:gap-3">
           <SearchForm />
-          {siteConfig.social.youtube ? (
-            <a
-              href={siteConfig.social.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full bg-gradient-to-r from-[#ff5500] to-[#f97316] px-3 py-2 text-xs font-[700] text-white shadow-[0_4px_16px_rgba(249,115,22,0.3)] transition-all duration-200 hover:scale-105 hover:shadow-[0_6px_22px_rgba(249,115,22,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] xl:min-h-[42px] xl:gap-2 xl:px-5 xl:text-[0.875rem] wide:min-h-[48px] wide:px-7 wide:text-base"
-            >
-              <Bell className="h-4 w-4" />
-              Subscribe
-            </a>
-          ) : null}
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat with RailAgents on WhatsApp"
+            className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full bg-[#25D366] px-3 py-2 text-xs font-[700] text-white shadow-[0_4px_16px_rgba(37,211,102,0.24)] transition-all duration-200 hover:scale-105 hover:bg-[#20bd5a] hover:shadow-[0_6px_22px_rgba(37,211,102,0.32)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] xl:min-h-[42px] xl:gap-2 xl:px-5 xl:text-[0.875rem] wide:min-h-[48px] wide:px-7 wide:text-base"
+          >
+            <FaWhatsapp aria-hidden="true" className="h-4 w-4" />
+            WhatsApp Us
+          </a>
         </div>
 
         <MobileMenu />
